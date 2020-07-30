@@ -56,6 +56,9 @@
 		B4A2F29824D329E30083A9E5 /* Bebeer */ = {
 			isa = PBXGroup;
 			children = (
+				B4A2F2AE24D32C1F0083A9E5 /* Model */,
+				B4A2F2AF24D32C2A0083A9E5 /* View */,
+				B4A2F2B024D32C2F0083A9E5 /* ViewModel */,
 				B4A2F29924D329E30083A9E5 /* AppDelegate.swift */,
 				B4A2F29B24D329E30083A9E5 /* SceneDelegate.swift */,
 				B4A2F29D24D329E30083A9E5 /* ContentView.swift */,
@@ -73,6 +76,27 @@
 				B4A2F2A224D329E40083A9E5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B4A2F2AE24D32C1F0083A9E5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B4A2F2AF24D32C2A0083A9E5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B4A2F2B024D32C2F0083A9E5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
