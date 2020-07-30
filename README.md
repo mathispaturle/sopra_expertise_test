@@ -1,1 +1,1 @@
-# sopra_expertise_test
+# Sopra Steria Expertise Test App
