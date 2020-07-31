@@ -10,6 +10,8 @@ import SwiftUI
 
 struct Home: View {
     
+    @ObservedObject var beerViewModel = BeerViewModel()
+    
     @State private var searchText = ""
     @State private var showConfirmButton: Bool = false
     
@@ -19,26 +21,38 @@ struct Home: View {
     var body: some View {
        
         ZStack(alignment: .topLeading) {
-            Rectangle().foregroundColor(Color.init(red: 246/255, green: 185/255, blue: 59/255)).edgesIgnoringSafeArea(.top).edgesIgnoringSafeArea(.bottom)
+            Rectangle().foregroundColor(Color.init(red: 246/255, green: 185/255, blue: 59/255))
+                .edgesIgnoringSafeArea(.top)
+                .edgesIgnoringSafeArea(.bottom)
             
             VStack(alignment: .leading, spacing: 8){
                 
-                Text("Welcome to BeBeer").bold().font(.callout).foregroundColor(Color.init(red: 7/255, green: 153/255, blue: 146/255))
+                Text("Welcome to BeBeer").bold()
+                    .font(.callout)
+                    .foregroundColor(Color.init(red: 7/255, green: 153/255, blue: 146/255))
 
                 // Search view
                 HStack {
                     HStack (alignment: .center) {
                         
                         TextField("", text: $searchText, onEditingChanged: { (changing) in
-                            print("Changing: \(changing)")
+                            //print("Changing: \(changing)")
                         }, onCommit: {
-                            print(self.searchText)
+                            //print(self.searchText)
                             
                             //Perform query
+                            self.beerViewModel.fetchBeers(food: self.searchText, mode: self.selection)
                             
-                        }).placeHolder(Text("Find your beer").bold().foregroundColor(.white).font(.largeTitle), show: searchText.isEmpty).foregroundColor(.white).font(Font.largeTitle.weight(.bold)).accentColor(Color.init(red: 7/255, green: 153/255, blue: 146/255))
+                        }).placeHolder(Text("Find your beer").bold()
+                            .foregroundColor(.white)
+                            .font(.largeTitle), show: searchText.isEmpty)
+                            .foregroundColor(.white)
+                            .font(Font.largeTitle.weight(.bold))
+                            .accentColor(Color.init(red: 7/255, green: 153/255, blue: 146/255))
                         
-                        Image(systemName: "magnifyingglass").foregroundColor(.white).font(.largeTitle)
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.white)
+                            .font(.largeTitle)
                         
                         Button(action: {
                             self.searchText = ""
@@ -65,10 +79,9 @@ struct Home: View {
                         ForEach(0..<items.count, id: \.self) { index in
                             Text(self.items[index]).tag(index)
                         }
-                        }.pickerStyle(SegmentedPickerStyle())
+                    }.pickerStyle(SegmentedPickerStyle())
                 }
                 
-                Image("Tutorial")
                 
                 Spacer()
                 VStack (alignment: .leading){
