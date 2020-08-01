@@ -20,7 +20,6 @@ struct BeerRowView: View {
     
     var body: some View {
         
-        
         HStack(alignment: .top, spacing: 32){
             ZStack (alignment: .leading){
                 Rectangle()
@@ -56,7 +55,7 @@ struct BeerRowView: View {
             }.padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
             
             Spacer()
-        }.padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+        }.padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 8))
         
     }
 }

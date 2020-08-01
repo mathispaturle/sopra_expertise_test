@@ -15,23 +15,26 @@ struct BeerListView: View {
     
     //Beers View Model
     @ObservedObject var beerViewModel = BeerViewModel()
-    
+        
     var body: some View {
 //        LoadingView(isShowing: .constant(beerViewModel.beers.isEmpty)) {
 //              ...replace with code from below
 //        }
         
+        NavigationView {
+            List(self.beerViewModel.beers) { beer in
+                NavigationLink(destination: BeerView(beer: beer)) {
+                    BeerRowView(beer: beer)
+                }
+            }.onAppear(){
+                if (self.beerViewModel.beers.isEmpty){
+                    self.beerViewModel.fetchBeers(food: self.foodString)
+                }
+                UITableView.appearance().separatorStyle = .none
+                }.navigationBarTitle("")
+            .navigationBarHidden(true).foregroundColor(Color(UIColor.FlatColor.Yellow.Turbo))
         
-        List(self.beerViewModel.beers) { beer in
-            BeerRowView(beer: beer)
-        }.onAppear(){
-            self.beerViewModel.fetchBeers(food: self.foodString)
-            
-            UITableView.appearance().separatorStyle = .none
-            
         }
-            .foregroundColor(Color(UIColor.FlatColor.Yellow.Turbo))
-    
     }
 }
 
