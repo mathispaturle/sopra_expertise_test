@@ -27,5 +27,25 @@ struct Beer: Identifiable, Decodable {
     let food_pairing: [String]
     let brewers_tips: String
     let contributed_by: String
+    
+    init(){
+        self.id = 0
+        self.name = "name"
+        self.tagline = "tagline"
+        self.first_brewed = "first brewed"
+        self.description = "description"
+        self.image_url = ""
+        self.abv = 0
+        self.ibu = 0
+        self.target_fg = 0
+        self.target_og = 0
+        self.ebc = 0
+        self.srm = 0
+        self.ph = 0
+        self.attenuation_level = 0
+        self.food_pairing = [""]
+        self.brewers_tips = "brewer tips"
+        self.contributed_by = "contributed by"
+    }
 }
 
