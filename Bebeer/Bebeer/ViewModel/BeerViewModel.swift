@@ -13,8 +13,8 @@ let apiUrl = "https://api.punkapi.com/v2/beers?food="
 class BeerViewModel: ObservableObject {
     @Published var beers: [Beer] = []
     
-    //Query to API with food argument and ascending/descending ABV %
-    func fetchBeers(food: String, mode: Int){
+    //Fetch data from API with food argument and ascending ABV %
+    func fetchBeers(food: String){
         beers.removeAll()
         
         let foodString = food.replacingOccurrences(of: " ", with: "_")
@@ -39,7 +39,10 @@ class BeerViewModel: ObservableObject {
                         print("Error: \(err)")
                     }
                     
-                    print("//BEERS RETRIEVED: \n \(self.beers)")
+                    //Initial sorting in ascending ABV %
+                    self.beers.sort {
+                        $0.abv < $1.abv
+                    }
                 }
             } else {
                 print("HTTPURLResponse code: \(response.statusCode)")

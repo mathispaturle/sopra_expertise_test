@@ -17,8 +17,8 @@ struct Beer: Identifiable, Decodable {
     let image_url: String?
     let abv: Float
     let ibu: Int
-    let target_fg: Int
-    let target_og: Int
+    let target_fg: Float
+    let target_og: Float
     let ebc: Int
     let srm: Float
     let ph: Float
