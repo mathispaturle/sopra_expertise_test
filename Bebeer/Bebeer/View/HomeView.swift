@@ -69,9 +69,6 @@ struct HomeView: View {
                             .accentColor(Color(UIColor.FlatColor.Violet.BlueGem))
                             .foregroundColor(Color(UIColor.FlatColor.Gray.Iron))
                            
-                        
-                        
-                        
                         Button(action: {
                             self.searchText = ""
                         }) {

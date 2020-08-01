@@ -16,40 +16,22 @@ struct BeerListView: View {
     //Beers View Model
     @ObservedObject var beerViewModel = BeerViewModel()
     
-    
     var body: some View {
+//        LoadingView(isShowing: .constant(beerViewModel.beers.isEmpty)) {
+//              ...replace with code from below
+//        }
         
-        List(beerViewModel.beers) { beer in
+        
+        List(self.beerViewModel.beers) { beer in
             BeerRowView(beer: beer)
         }.onAppear(){
             self.beerViewModel.fetchBeers(food: self.foodString)
+            
+            UITableView.appearance().separatorStyle = .none
+            
         }
-        
-//        List(beerViewModel.beers, id: \.self) { beer in
-//            Text("Hello World")
-//            Text(beer)
-//
-//        }.onAppear(){
-//            self.beerViewModel.fetchBeers(food: self.foodString)
-//        }
-        
-        
-//        LoadingView(isShowing: .constant(beerViewModel.$beers.count() != 0)) {
-//            NavigationView {
-//                List(["1", "2", "3", "4", "5"], id: \.self) { row in
-//                    Text(row)
-//                }.navigationBarTitle(Text("A List"), displayMode: .large)
-//            }
-//        }
-        
-        
-//        NavigationView {
-//            List {
-//                Text("Hello World")
-//                Text("Hello World")
-//                Text("Hello World")
-//            }.navigationBarTitle(self.foodString)
-//        }
+            .foregroundColor(Color(UIColor.FlatColor.Yellow.Turbo))
+    
     }
 }
 
