@@ -9,10 +9,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    
-    //Beers View Model
-    @ObservedObject var beerViewModel = BeerViewModel()
-    
+        
     //Search Field vars
     @State private var searchText = ""
     @State private var showConfirmButton: Bool = false
@@ -58,7 +55,7 @@ struct HomeView: View {
                             
                             self.viewControllerHolder?.present(style: .fullScreen) {
                                 
-                                BeerListView()
+                                BeerListView(foodString: self.searchText)
                                 
                                 Button("Cancel") {
                                     NotificationCenter.default.post(name: Notification.Name(rawValue: "dismissModal"), object: nil)

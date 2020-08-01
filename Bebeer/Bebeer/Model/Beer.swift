@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct Beer: Identifiable, Decodable {
+    let uuid = UUID()
     let id: Int
     let name: String
     let tagline: String
@@ -19,7 +20,7 @@ struct Beer: Identifiable, Decodable {
     let ibu: Int
     let target_fg: Float
     let target_og: Float
-    let ebc: Int
+    let ebc: Float
     let srm: Float
     let ph: Float
     let attenuation_level: Float

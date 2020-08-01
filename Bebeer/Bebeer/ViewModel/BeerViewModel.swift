@@ -10,7 +10,7 @@ import SwiftUI
 
 let apiUrl = "https://api.punkapi.com/v2/beers?food="
 
-class BeerViewModel: ObservableObject {
+class BeerViewModel: ObservableObject, Identifiable {
     @Published var beers: [Beer] = []
     
     //Fetch data from API with food argument and ascending ABV %

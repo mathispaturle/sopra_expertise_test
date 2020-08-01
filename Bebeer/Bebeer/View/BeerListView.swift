@@ -9,8 +9,47 @@
 import SwiftUI
 
 struct BeerListView: View {
+    
+    //String of food written by user
+    @State var foodString = "Food"
+    
+    //Beers View Model
+    @ObservedObject var beerViewModel = BeerViewModel()
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        List(beerViewModel.beers) { beer in
+            Text("\(beer.name)")
+        }.onAppear(){
+            self.beerViewModel.fetchBeers(food: self.foodString)
+        }
+        
+//        List(beerViewModel.beers, id: \.self) { beer in
+//            Text("Hello World")
+//            Text(beer)
+//
+//        }.onAppear(){
+//            self.beerViewModel.fetchBeers(food: self.foodString)
+//        }
+        
+        
+//        LoadingView(isShowing: .constant(beerViewModel.$beers.count() != 0)) {
+//            NavigationView {
+//                List(["1", "2", "3", "4", "5"], id: \.self) { row in
+//                    Text(row)
+//                }.navigationBarTitle(Text("A List"), displayMode: .large)
+//            }
+//        }
+        
+        
+//        NavigationView {
+//            List {
+//                Text("Hello World")
+//                Text("Hello World")
+//                Text("Hello World")
+//            }.navigationBarTitle(self.foodString)
+//        }
     }
 }
 
