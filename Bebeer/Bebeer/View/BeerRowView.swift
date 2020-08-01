@@ -20,12 +20,14 @@ struct BeerRowView: View {
     
     var body: some View {
         
-        HStack {
+        HStack () {
             Image(uiImage: ((self.remoteImageURL.data.isEmpty) ? UIImage(named: "placeholder-image") : UIImage(data: self.remoteImageURL.data))!)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .frame(height: 80, alignment: .bottomLeading)
+                .padding()
             Text(beer.name)
-        }
+        }.padding()
     }
 }
 

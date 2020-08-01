@@ -20,7 +20,7 @@ struct BeerListView: View {
     var body: some View {
         
         List(beerViewModel.beers) { beer in
-            Text("\(beer.name)")
+            BeerRowView(beer: beer)
         }.onAppear(){
             self.beerViewModel.fetchBeers(food: self.foodString)
         }
