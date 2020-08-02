@@ -55,7 +55,7 @@ struct BeerRowView: View {
             }.padding(EdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0))
             
             Spacer()
-        }.padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 8))
+        }.padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 8))
         
     }
 }
