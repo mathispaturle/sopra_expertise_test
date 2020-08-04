@@ -44,25 +44,14 @@ struct HomeView: View {
                         
                         TextField("", text: $searchText, onCommit: {
                             
-                            print(self.searchText)
-                            
-                            
-                            
-                            //Perform search via ViewModel
-                            //self.beerViewModel.fetchBeers(food: self.searchText)
-                            
-                            
-                            
                             self.viewControllerHolder?.present(style: .fullScreen) {
                                 
                                 BeerListView(foodString: self.searchText)
                                 
-                                Button("Cancel") {
-                                    NotificationCenter.default.post(name: Notification.Name(rawValue: "dismissModal"), object: nil)
-                                }
+//                                Button("Cancel") {
+//                                    NotificationCenter.default.post(name: Notification.Name(rawValue: "dismissModal"), object: nil)
+//                                }
                             }
-                            
-                            
                             
                             }).foregroundColor(Color(UIColor.FlatColor.Gray.IronGray))
                             .placeHolder(Text("Find your beer"), show: searchText.isEmpty)
@@ -103,7 +92,6 @@ struct HomeView: View {
 
                 
                 VStack (alignment: .leading){
-                    
                     
                     Spacer()
 

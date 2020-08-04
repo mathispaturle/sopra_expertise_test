@@ -46,6 +46,7 @@ extension UIColor {
         struct Yellow {
             static let Energy = UIColor(netHex: 0xF2D46F)
             static let Turbo = UIColor(netHex: 0xF7C23E)
+            static let Brownish = UIColor(netHex: 0xD39C00)
         }
         
         struct Orange {

@@ -50,5 +50,17 @@ class BeerViewModel: ObservableObject, Identifiable {
         }.resume()
     }
     
+    func ascendingABV() {
+        self.beers.sort {
+            $0.abv < $1.abv
+        }
+    }
+    
+    func descendingABV() {
+        self.beers.sort {
+            $0.abv > $1.abv
+        }
+    }
+    
     
 }
