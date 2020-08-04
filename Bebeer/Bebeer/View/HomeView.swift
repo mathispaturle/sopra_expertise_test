@@ -93,7 +93,6 @@ struct HomeView: View {
                 
                 VStack (alignment: .leading){
                     
-                    
                     Spacer()
 
                     Text("App created by Mathis Paturle")
