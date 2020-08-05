@@ -21,9 +21,17 @@ struct BeerListView: View {
     @State private var previous: Int = 0
     private let items: [String] = ["Lower ABV%", "Higher ABV%"]
    
+    var backButton: some View {
+        ZStack(alignment: .bottomTrailing){
+            Button("Cancel") {
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "dismissModal"), object: nil)
+                }.accentColor(Color(UIColor.FlatColor.Violet.BlueGem))
+        }
+        
+    }
     
     var body: some View {
-        LoadingView(isShowing: .constant(beerViewModel.beers.isEmpty)) {
+//        LoadingView(isShowing: .constant(beerViewModel.beers.isEmpty)) {
             NavigationView () {
                 VStack {
                     VStack {
@@ -39,8 +47,7 @@ struct BeerListView: View {
                                 UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
                                 UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.FlatColor.Violet.BlueGem], for: .normal)
                                 
-                                
-                                print(self.foodString)
+                                //print(self.foodString)
                                 
                         }.onReceive([self.selection].publisher.first()) { (value) in
                                 print(self.selection)
@@ -54,7 +61,6 @@ struct BeerListView: View {
                             }
                         }
                     }
-                    
                     List(self.beerViewModel.beers) { beer in
                         NavigationLink(destination: BeerView(beer: beer)) {
                             BeerRowView(beer: beer)
@@ -63,14 +69,13 @@ struct BeerListView: View {
                         if (self.beerViewModel.beers.isEmpty){
                             self.beerViewModel.fetchBeers(food: self.foodString)
                         }
-                            UITableView.appearance().separatorStyle = .none
+                        UITableView.appearance().separatorStyle = .none
                     }.navigationBarTitle(self.foodString)
-                       
+                    .navigationBarItems(trailing: backButton)
+                    
                 }
             }
-        }
-        
-        
+//      }
     }
 }
 

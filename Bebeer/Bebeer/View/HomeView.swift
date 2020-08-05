@@ -45,18 +45,12 @@ struct HomeView: View {
                         TextField("", text: $searchText, onCommit: {
                             
                             self.viewControllerHolder?.present(style: .fullScreen) {
-                                
                                 BeerListView(foodString: self.searchText)
-                                
-//                                Button("Cancel") {
-//                                    NotificationCenter.default.post(name: Notification.Name(rawValue: "dismissModal"), object: nil)
-//                                }
                             }
-                            
-                            }).foregroundColor(Color(UIColor.FlatColor.Gray.IronGray))
-                            .placeHolder(Text("Find your beer"), show: searchText.isEmpty)
-                            .accentColor(Color(UIColor.FlatColor.Violet.BlueGem))
-                            .foregroundColor(Color(UIColor.FlatColor.Gray.Iron))
+                        }).foregroundColor(Color(UIColor.FlatColor.Gray.IronGray))
+                        .placeHolder(Text("Find your beer"), show: searchText.isEmpty)
+                        .accentColor(Color(UIColor.FlatColor.Violet.BlueGem))
+                        .foregroundColor(Color(UIColor.FlatColor.Gray.Iron))
                            
                         Button(action: {
                             self.searchText = ""
@@ -79,17 +73,13 @@ struct HomeView: View {
                         .foregroundColor(Color(.systemBlue))
                     }
                 }
-                .navigationBarHidden(showConfirmButton)
-
             }.padding(32)
             
             ZStack {
-                
                 Rectangle()
                     .foregroundColor(Color(UIColor.FlatColor.Yellow.Turbo))
                     .cornerRadius(20, corners: [.topLeft, .topRight])
                     .shadow(color: Color(UIColor.FlatColor.Gray.Iron), radius: 10, x: 0, y: 0)
-
                 
                 VStack (alignment: .leading){
                     

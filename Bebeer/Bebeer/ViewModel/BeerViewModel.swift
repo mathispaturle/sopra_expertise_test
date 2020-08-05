@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+//API URL for punkapi
 let apiUrl = "https://api.punkapi.com/v2/beers?food="
 
 class BeerViewModel: ObservableObject, Identifiable {
@@ -27,6 +28,8 @@ class BeerViewModel: ObservableObject, Identifiable {
         //CAUTION: if API is dynamic and constantly updated, retrieving
         //the local json will discard new changes in the API Database
         if json != nil {
+            
+            //
             DispatchQueue.main.async {
                 do {
                     self.beers = try JSONDecoder().decode([Beer].self, from: json!)
@@ -81,12 +84,14 @@ class BeerViewModel: ObservableObject, Identifiable {
         }
     }
     
+    //Function that sorts the array in ascending ABV%
     func ascendingABV() {
         self.beers.sort {
             $0.abv < $1.abv
         }
     }
     
+    //Function that sorts the array in descending ABV%
     func descendingABV() {
         self.beers.sort {
             $0.abv > $1.abv
