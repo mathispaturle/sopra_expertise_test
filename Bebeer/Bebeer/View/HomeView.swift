@@ -21,6 +21,8 @@ struct HomeView: View {
     var body: some View {
          
         VStack {
+            
+            //Top information Welcome to BeBeer and search field
             VStack(alignment: .leading, spacing: 8){
                 
                 Text("Welcome to ").bold()
@@ -75,6 +77,7 @@ struct HomeView: View {
                 }
             }.padding(32)
             
+            //Bottom information
             ZStack {
                 Rectangle()
                     .foregroundColor(Color(UIColor.FlatColor.Yellow.Turbo))
@@ -103,6 +106,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+//ViewModifier for placeholder in search view
 struct PlaceHolder<T: View>: ViewModifier {
     var placeHolder: T
     var show: Bool
@@ -114,6 +118,7 @@ struct PlaceHolder<T: View>: ViewModifier {
     }
 }
 
+//Extension to handle placeHolder in search view
 extension View {
     func placeHolder<T:View>(_ holder: T, show: Bool) -> some View {
         self.modifier(PlaceHolder(placeHolder:holder, show: show))

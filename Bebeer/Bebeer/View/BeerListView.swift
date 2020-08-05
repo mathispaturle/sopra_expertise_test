@@ -21,6 +21,7 @@ struct BeerListView: View {
     @State private var previous: Int = 0
     private let items: [String] = ["Lower ABV%", "Higher ABV%"]
    
+    //Top bar item cancel button
     var backButton: some View {
         ZStack(alignment: .bottomTrailing){
             Button("Cancel") {
@@ -31,7 +32,7 @@ struct BeerListView: View {
     }
     
     var body: some View {
-//        LoadingView(isShowing: .constant(beerViewModel.beers.isEmpty)) {
+        LoadingView(isShowing: .constant(beerViewModel.beers.isEmpty)) {
             NavigationView () {
                 VStack {
                     VStack {
@@ -46,9 +47,7 @@ struct BeerListView: View {
                                 UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.FlatColor.Violet.BlueGem
                                 UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
                                 UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.FlatColor.Violet.BlueGem], for: .normal)
-                                
-                                //print(self.foodString)
-                                
+                                                                
                         }.onReceive([self.selection].publisher.first()) { (value) in
                                 print(self.selection)
                             if (self.selection == 0 && self.selection != self.previous){
@@ -71,11 +70,11 @@ struct BeerListView: View {
                         }
                         UITableView.appearance().separatorStyle = .none
                     }.navigationBarTitle(self.foodString)
-                    .navigationBarItems(trailing: backButton)
+                        .navigationBarItems(trailing: self.backButton)
                     
                 }
             }
-//      }
+        }
     }
 }
 

@@ -28,6 +28,8 @@ struct Beer: Identifiable, Decodable {
     let brewers_tips: String
     let contributed_by: String
     
+    //Default init for blank Beers
+    //Usage: preview views in-editor
     init(){
         self.id = 0
         self.name = "name"
