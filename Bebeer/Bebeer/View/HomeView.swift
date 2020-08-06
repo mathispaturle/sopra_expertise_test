@@ -21,6 +21,8 @@ struct HomeView: View {
     var body: some View {
          
         VStack {
+            
+            //Top information Welcome to BeBeer and search field
             VStack(alignment: .leading, spacing: 8){
                 
                 Text("Welcome to ").bold()
@@ -45,18 +47,12 @@ struct HomeView: View {
                         TextField("", text: $searchText, onCommit: {
                             
                             self.viewControllerHolder?.present(style: .fullScreen) {
-                                
                                 BeerListView(foodString: self.searchText)
-                                
-//                                Button("Cancel") {
-//                                    NotificationCenter.default.post(name: Notification.Name(rawValue: "dismissModal"), object: nil)
-//                                }
                             }
-                            
-                            }).foregroundColor(Color(UIColor.FlatColor.Gray.IronGray))
-                            .placeHolder(Text("Find your beer"), show: searchText.isEmpty)
-                            .accentColor(Color(UIColor.FlatColor.Violet.BlueGem))
-                            .foregroundColor(Color(UIColor.FlatColor.Gray.Iron))
+                        }).foregroundColor(Color(UIColor.FlatColor.Gray.IronGray))
+                        .placeHolder(Text("Find your beer"), show: searchText.isEmpty)
+                        .accentColor(Color(UIColor.FlatColor.Violet.BlueGem))
+                        .foregroundColor(Color(UIColor.FlatColor.Gray.Iron))
                            
                         Button(action: {
                             self.searchText = ""
@@ -79,21 +75,104 @@ struct HomeView: View {
                         .foregroundColor(Color(.systemBlue))
                     }
                 }
-                .navigationBarHidden(showConfirmButton)
-
             }.padding(32)
             
+            //Bottom information
             ZStack {
-                
                 Rectangle()
                     .foregroundColor(Color(UIColor.FlatColor.Yellow.Turbo))
                     .cornerRadius(20, corners: [.topLeft, .topRight])
                     .shadow(color: Color(UIColor.FlatColor.Gray.Iron), radius: 10, x: 0, y: 0)
-
                 
-                VStack (alignment: .leading){
+                VStack (alignment: .center){
                     
-                    Spacer()
+                    Text("HOW TO USE BeBEER")
+                    .bold()
+                        .font(.title)
+                        .padding(EdgeInsets(top: 32, leading: 32, bottom: 32, trailing: 32))
+                        .foregroundColor(.white)
+                    
+                    ScrollView (.vertical, showsIndicators: false) {
+                         VStack {
+                            
+                            //First section
+                            ZStack(alignment: .leading) {
+                                Rectangle().foregroundColor(Color(UIColor.FlatColor.Violet.BlueGem)).frame(maxWidth: .infinity, alignment: .leading).cornerRadius(8)
+                                
+                                HStack(alignment: .top){
+                                    Text("1.").bold().foregroundColor(.white)
+                                    Text("Type in the food of your choice").foregroundColor(.white)
+                                    Spacer()
+                                    Image("search-bar")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 50, alignment: .bottomLeading)
+                                        .colorInvert()
+                                }.padding()
+                                
+                                
+                            }.padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 32))
+                            
+                            //Third section
+                            ZStack(alignment: .leading) {
+                                Rectangle().foregroundColor(Color(UIColor.FlatColor.Violet.BlueGem)).frame(maxWidth: .infinity, alignment: .leading).cornerRadius(8)
+                                
+                                HStack(alignment: .top){
+                                    Text("2.").bold().foregroundColor(.white)
+                                    Text("Browse among a large variety of beers").foregroundColor(.white)
+                                    Spacer()
+                                    Image("files")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 50, alignment: .bottomLeading)
+                                        .colorInvert()
+                                }.padding()
+                                
+                                
+                            }.padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 32))
+                            
+                            
+                            //Second section
+                            ZStack(alignment: .leading) {
+                                Rectangle().foregroundColor(Color(UIColor.FlatColor.Violet.BlueGem)).frame(maxWidth: .infinity, alignment: .leading).cornerRadius(8)
+                                
+                                HStack(alignment: .top){
+                                    Text("3.").bold().foregroundColor(.white)
+                                    Text("Filter beers according to their ABV % ").foregroundColor(.white)
+                                    Spacer()
+                                    Image("filter")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 50, alignment: .bottomLeading)
+                                        .colorInvert()
+                                }.padding()
+                                
+                                
+                            }.padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 32))
+                            
+                            
+                            //Third section
+                            ZStack(alignment: .leading) {
+                                Rectangle().foregroundColor(Color(UIColor.FlatColor.Violet.BlueGem)).frame(maxWidth: .infinity, alignment: .leading).cornerRadius(8)
+                                
+                                HStack(alignment: .top){
+                                    Text("4.").bold().foregroundColor(.white)
+                                    Text("Savour the beer with your food!").foregroundColor(.white)
+                                    Spacer()
+                                    Image("beer")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 50, alignment: .bottomLeading)
+                                        .colorInvert()
+                                }.padding()
+                                
+                                
+                            }.padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 32))
+                            
+                            
+                         }.frame(width: 375, alignment: .leading)
+                    }
+                    
 
                     Text("App created by Mathis Paturle")
                     .bold()
@@ -113,6 +192,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+//ViewModifier for placeholder in search view
 struct PlaceHolder<T: View>: ViewModifier {
     var placeHolder: T
     var show: Bool
@@ -124,6 +204,7 @@ struct PlaceHolder<T: View>: ViewModifier {
     }
 }
 
+//Extension to handle placeHolder in search view
 extension View {
     func placeHolder<T:View>(_ holder: T, show: Bool) -> some View {
         self.modifier(PlaceHolder(placeHolder:holder, show: show))

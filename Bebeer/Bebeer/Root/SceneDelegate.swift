@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: contentView)
             
-            window.tintColor = .white // set the colour of the back navigation text
+            window.tintColor = .white 
 
             self.window = window
             window.makeKeyAndVisible()
