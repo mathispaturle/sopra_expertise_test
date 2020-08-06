@@ -84,9 +84,95 @@ struct HomeView: View {
                     .cornerRadius(20, corners: [.topLeft, .topRight])
                     .shadow(color: Color(UIColor.FlatColor.Gray.Iron), radius: 10, x: 0, y: 0)
                 
-                VStack (alignment: .leading){
+                VStack (alignment: .center){
                     
-                    Spacer()
+                    Text("HOW TO USE BeBEER")
+                    .bold()
+                        .font(.title)
+                        .padding(EdgeInsets(top: 32, leading: 32, bottom: 32, trailing: 32))
+                        .foregroundColor(.white)
+                    
+                    ScrollView (.vertical, showsIndicators: false) {
+                         VStack {
+                            
+                            //First section
+                            ZStack(alignment: .leading) {
+                                Rectangle().foregroundColor(Color(UIColor.FlatColor.Violet.BlueGem)).frame(maxWidth: .infinity, alignment: .leading).cornerRadius(8)
+                                
+                                HStack(alignment: .top){
+                                    Text("1.").bold().foregroundColor(.white)
+                                    Text("Type in the food of your choice").foregroundColor(.white)
+                                    Spacer()
+                                    Image("search-bar")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 50, alignment: .bottomLeading)
+                                        .colorInvert()
+                                }.padding()
+                                
+                                
+                            }.padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 32))
+                            
+                            //Third section
+                            ZStack(alignment: .leading) {
+                                Rectangle().foregroundColor(Color(UIColor.FlatColor.Violet.BlueGem)).frame(maxWidth: .infinity, alignment: .leading).cornerRadius(8)
+                                
+                                HStack(alignment: .top){
+                                    Text("2.").bold().foregroundColor(.white)
+                                    Text("Browse among a large variety of beers").foregroundColor(.white)
+                                    Spacer()
+                                    Image("files")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 50, alignment: .bottomLeading)
+                                        .colorInvert()
+                                }.padding()
+                                
+                                
+                            }.padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 32))
+                            
+                            
+                            //Second section
+                            ZStack(alignment: .leading) {
+                                Rectangle().foregroundColor(Color(UIColor.FlatColor.Violet.BlueGem)).frame(maxWidth: .infinity, alignment: .leading).cornerRadius(8)
+                                
+                                HStack(alignment: .top){
+                                    Text("3.").bold().foregroundColor(.white)
+                                    Text("Filter beers according to their ABV % ").foregroundColor(.white)
+                                    Spacer()
+                                    Image("filter")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 50, alignment: .bottomLeading)
+                                        .colorInvert()
+                                }.padding()
+                                
+                                
+                            }.padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 32))
+                            
+                            
+                            //Third section
+                            ZStack(alignment: .leading) {
+                                Rectangle().foregroundColor(Color(UIColor.FlatColor.Violet.BlueGem)).frame(maxWidth: .infinity, alignment: .leading).cornerRadius(8)
+                                
+                                HStack(alignment: .top){
+                                    Text("4.").bold().foregroundColor(.white)
+                                    Text("Savour the beer with your food!").foregroundColor(.white)
+                                    Spacer()
+                                    Image("beer")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 50, alignment: .bottomLeading)
+                                        .colorInvert()
+                                }.padding()
+                                
+                                
+                            }.padding(EdgeInsets(top: 0, leading: 32, bottom: 0, trailing: 32))
+                            
+                            
+                         }.frame(width: 375, alignment: .leading)
+                    }
+                    
 
                     Text("App created by Mathis Paturle")
                     .bold()
